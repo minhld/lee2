@@ -1,20 +1,40 @@
 INSERT INTO customers (id, first_name, last_name, email) VALUES
     (1, 'Maya', 'Nguyen', 'maya.nguyen@example.com'),
     (2, 'Daniel', 'Reed', 'daniel.reed@example.com'),
-    (3, 'Priya', 'Shah', 'priya.shah@example.com');
+    (3, 'Priya', 'Shah', 'priya.shah@example.com'),
+    (4, 'Avery', 'Johnson', 'avery.johnson@example.com'),
+    (5, 'Elena', 'Martinez', 'elena.martinez@example.com'),
+    (6, 'Noah', 'Kim', 'noah.kim@example.com'),
+    (7, 'Sofia', 'Garcia', 'sofia.garcia@example.com'),
+    (8, 'Marcus', 'Brown', 'marcus.brown@example.com');
 
 INSERT INTO items (id, sku, name, unit_price) VALUES
     (1, 'KEY-001', 'Mechanical Keyboard', 129.99),
     (2, 'MOU-002', 'Wireless Mouse', 49.99),
     (3, 'MON-003', '27 Inch Monitor', 249.00),
     (4, 'USB-004', 'USB-C Hub', 79.50),
-    (5, 'HDP-005', 'Noise Cancelling Headphones', 199.95);
+    (5, 'HDP-005', 'Noise Cancelling Headphones', 199.95),
+    (6, 'CAM-006', 'Webcam', 89.99),
+    (7, 'MIC-007', 'USB Microphone', 119.00),
+    (8, 'DSK-008', 'Standing Desk Mat', 39.95),
+    (9, 'CHR-009', 'Ergonomic Chair', 349.00),
+    (10, 'SSD-010', 'Portable SSD 1TB', 159.99),
+    (11, 'CAB-011', 'Braided USB-C Cable', 14.99),
+    (12, 'LMP-012', 'Desk Lamp', 64.50);
 
 INSERT INTO customer_orders (id, customer_id, order_number, order_date, status) VALUES
     (1, 1, 'ORD-1001', '2026-06-24', 'PAID'),
     (2, 1, 'ORD-1002', '2026-06-26', 'SHIPPED'),
     (3, 2, 'ORD-1003', '2026-06-27', 'PAID'),
-    (4, 3, 'ORD-1004', '2026-06-29', 'PENDING');
+    (4, 3, 'ORD-1004', '2026-06-29', 'PENDING'),
+    (5, 4, 'ORD-1005', '2026-06-29', 'PAID'),
+    (6, 5, 'ORD-1006', '2026-06-30', 'PROCESSING'),
+    (7, 6, 'ORD-1007', '2026-06-30', 'SHIPPED'),
+    (8, 7, 'ORD-1008', '2026-07-01', 'PAID'),
+    (9, 8, 'ORD-1009', '2026-07-01', 'PENDING'),
+    (10, 2, 'ORD-1010', '2026-07-02', 'PAID'),
+    (11, 5, 'ORD-1011', '2026-07-03', 'CANCELLED'),
+    (12, 8, 'ORD-1012', '2026-07-03', 'PROCESSING');
 
 INSERT INTO order_items (id, order_id, item_id, quantity, unit_price) VALUES
     (1, 1, 1, 1, 129.99),
@@ -26,4 +46,25 @@ INSERT INTO order_items (id, order_id, item_id, quantity, unit_price) VALUES
     (7, 3, 4, 1, 79.50),
     (8, 4, 1, 1, 129.99),
     (9, 4, 3, 2, 249.00),
-    (10, 4, 5, 1, 199.95);
+    (10, 4, 5, 1, 199.95),
+    (11, 5, 6, 1, 89.99),
+    (12, 5, 7, 1, 119.00),
+    (13, 5, 11, 3, 14.99),
+    (14, 6, 9, 1, 349.00),
+    (15, 6, 8, 1, 39.95),
+    (16, 6, 12, 1, 64.50),
+    (17, 7, 10, 2, 159.99),
+    (18, 7, 11, 4, 14.99),
+    (19, 8, 3, 1, 249.00),
+    (20, 8, 6, 1, 89.99),
+    (21, 8, 7, 1, 119.00),
+    (22, 9, 9, 2, 349.00),
+    (23, 9, 12, 2, 64.50),
+    (24, 10, 1, 1, 129.99),
+    (25, 10, 5, 1, 199.95),
+    (26, 10, 10, 1, 159.99),
+    (27, 11, 2, 1, 49.99),
+    (28, 11, 8, 2, 39.95),
+    (29, 12, 4, 1, 79.50),
+    (30, 12, 6, 2, 89.99),
+    (31, 12, 11, 5, 14.99);
