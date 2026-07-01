@@ -12,7 +12,7 @@ public class OpenApiConfig {
 	OpenAPI openAPI() {
 		return new OpenAPI()
 				.info(new Info()
-						.title("lee2 API")
-						.version("0.0.1-SNAPSHOT"));
+						.title("Lee2 API")
+						.version("1.0.0-SNAPSHOT"));
 	}
 }
