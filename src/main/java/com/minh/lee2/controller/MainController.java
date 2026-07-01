@@ -1,6 +1,6 @@
 package com.minh.lee2.controller;
 
-import com.minh.lee2.MainService;
+import com.minh.lee2.service.MainService;
 import com.minh.lee2.model.SystemInfo;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;

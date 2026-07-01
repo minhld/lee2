@@ -19,10 +19,10 @@ class Lee2ApplicationTests {
 
 	@Test
 	void loadsOrderSeedData() {
-		assertThat(countRows("customers")).isEqualTo(3);
-		assertThat(countRows("items")).isEqualTo(5);
-		assertThat(countRows("customer_orders")).isEqualTo(4);
-		assertThat(countRows("order_items")).isEqualTo(10);
+		assertThat(countRows("customers")).isEqualTo(8);
+		assertThat(countRows("items")).isEqualTo(12);
+		assertThat(countRows("customer_orders")).isEqualTo(12);
+		assertThat(countRows("order_items")).isEqualTo(31);
 	}
 
 	private Integer countRows(String tableName) {

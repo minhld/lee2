@@ -1,4 +1,4 @@
-package com.minh.lee2;
+package com.minh.lee2.service;
 
 import jakarta.servlet.ServletContext;
 import com.minh.lee2.model.SystemInfo;
