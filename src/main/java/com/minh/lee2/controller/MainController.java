@@ -8,12 +8,10 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/v1")
@@ -44,5 +42,10 @@ public class MainController {
     @GetMapping(path = "/customer-order/{id}")
     public ResponseEntity<CustomerOrder> getCustomer(@PathVariable Long id) {
         return ResponseEntity.ok(mainService.getCustomerOrder(id));
+    }
+
+    @PostMapping(path = "/customer/add")
+    public ResponseEntity<Customer> addCustomer(@RequestBody Customer customer) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(mainService.createCustomer(customer));
     }
 }

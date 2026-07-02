@@ -10,6 +10,9 @@ public record SystemInfo(
         @Schema(description = "Embedded Tomcat server version", example = "Apache Tomcat/11.0.21")
         String tomcatVersion,
 
+        @Schema(description = "System name", example = "Lee service v2")
+        String systemName,
+
         @Schema(description = "Operating system information")
         SystemDetails system
 ) {
