@@ -1,5 +1,6 @@
 package com.minh.lee2.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -33,6 +34,7 @@ public class Customer {
     @Column(nullable = false, unique = true, length = 255)
     private String email;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "customer")
     private List<CustomerOrder> orders = new ArrayList<>();
 }
