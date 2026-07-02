@@ -1,12 +1,15 @@
 package com.minh.lee2.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.minh.lee2.model.CustomerOrder;
 import com.minh.lee2.repository.CustomerOrderDao;
 import jakarta.servlet.ServletContext;
 import com.minh.lee2.model.SystemInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import tools.jackson.databind.ObjectMapper;
 
 @Slf4j
 @Service
@@ -14,7 +17,11 @@ public class MainService {
     private final ServletContext servletContext;
 
     @Autowired
-    private CustomerOrderDao customerOrderDao;
+    @Qualifier("customerOrderData")
+    private CustomerOrderDao customerOrderDao1;
+
+    @Autowired
+    ObjectMapper objectMapper;
 
     public MainService(ServletContext servletContext) {
         this.servletContext = servletContext;
@@ -33,6 +40,8 @@ public class MainService {
     }
 
     public CustomerOrder getCustomerOrder(Long id) {
-        return this.customerOrderDao.getReferenceById(id);
+        CustomerOrder customerOrder = this.customerOrderDao1.getReferenceById(id);
+        log.info("getCustomerOrder:{}", objectMapper.writeValueAsString(customerOrder));
+        return customerOrder;
     }
 }
