@@ -1,10 +1,12 @@
 package com.minh.lee2.service;
 
 import com.minh.lee2.config.AppProperties;
+import com.minh.lee2.controller.model.CustomerInput;
 import com.minh.lee2.model.Customer;
 import com.minh.lee2.model.CustomerOrder;
 import com.minh.lee2.payment.PaymentInfo;
 import com.minh.lee2.payment.PaymentService;
+import com.minh.lee2.repository.CustomerDao;
 import com.minh.lee2.repository.CustomerOrderDao;
 import jakarta.servlet.ServletContext;
 import com.minh.lee2.model.SystemInfo;
@@ -24,7 +26,10 @@ public class MainService {
 
     @Autowired
     @Qualifier("customerOrderData")
-    private CustomerOrderDao customerOrderDao1;
+    private CustomerOrderDao customerOrderData;
+
+    @Autowired
+    private CustomerDao customerDao;
 
     @Autowired
     private PaymentService paymentService;
@@ -50,7 +55,7 @@ public class MainService {
     }
 
     public CustomerOrder getCustomerOrder(Long id) {
-        CustomerOrder customerOrder = this.customerOrderDao1.getReferenceById(id);
+        CustomerOrder customerOrder = this.customerOrderData.getReferenceById(id);
         log.info("getCustomerOrder:{}", objectMapper.writeValueAsString(customerOrder));
 
         log.info("Applying Payment");
@@ -59,9 +64,13 @@ public class MainService {
         return customerOrder;
     }
 
-    public Customer createCustomer(Customer customer) {
+    public Customer createCustomer(CustomerInput customer) {
         log.info("Create new customer from the input: {}", customer);
-
-        return null;
+        Customer newCustomer = Customer.builder()
+                .firstName(customer.getFirstName())
+                .lastName(customer.getLastName())
+                .email(customer.getEmail())
+                .build();
+        return this.customerDao.save(newCustomer);
     }
 }

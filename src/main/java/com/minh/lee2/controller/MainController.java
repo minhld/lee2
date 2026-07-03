@@ -1,5 +1,6 @@
 package com.minh.lee2.controller;
 
+import com.minh.lee2.controller.model.CustomerInput;
 import com.minh.lee2.model.Customer;
 import com.minh.lee2.model.CustomerOrder;
 import com.minh.lee2.service.MainService;
@@ -8,6 +9,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -45,7 +47,7 @@ public class MainController {
     }
 
     @PostMapping(path = "/customer/add")
-    public ResponseEntity<Customer> addCustomer(@RequestBody Customer customer) {
+    public ResponseEntity<Customer> addCustomer(@Valid @RequestBody CustomerInput customer) {
         return ResponseEntity.status(HttpStatus.CREATED).body(mainService.createCustomer(customer));
     }
 }
