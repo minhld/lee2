@@ -42,8 +42,13 @@ public class MainController {
     }
 
     @GetMapping(path = "/customer-order/{id}")
-    public ResponseEntity<CustomerOrder> getCustomer(@PathVariable Long id) {
+    public ResponseEntity<CustomerOrder> getCustomerOrder(@PathVariable Long id) {
         return ResponseEntity.ok(mainService.getCustomerOrder(id));
+    }
+
+    @GetMapping(path = "/customer/{id}")
+    public ResponseEntity<Customer> getCustomer(@PathVariable Long id) {
+        return ResponseEntity.ok(mainService.getCustomer(id));
     }
 
     @PostMapping(path = "/customer/add")
