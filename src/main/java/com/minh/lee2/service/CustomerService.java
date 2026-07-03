@@ -6,6 +6,7 @@ import com.minh.lee2.model.Customer;
 import com.minh.lee2.repository.CustomerDao;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -14,6 +15,7 @@ public class CustomerService {
     @Autowired
     private CustomerDao customerDao;
 
+    @Cacheable("customers")
     public Customer getCustomer(Long id) {
         log.info("Get customer by ID: {}", id);
         try {

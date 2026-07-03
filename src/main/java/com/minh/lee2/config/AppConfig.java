@@ -2,6 +2,8 @@ package com.minh.lee2.config;
 
 import com.minh.lee2.repository.CustomerOrderDao;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import tools.jackson.databind.ObjectMapper;
@@ -17,6 +19,11 @@ public class AppConfig {
     @Bean
     public CustomerOrderDao customerOrderData(@Qualifier("customerOrderDao") CustomerOrderDao customerOrderDao) {
         return customerOrderDao;
+    }
+
+    @Bean
+    public CacheManager cacheManager() {
+        return new ConcurrentMapCacheManager("customers", "orders");
     }
 
 }

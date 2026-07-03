@@ -19,7 +19,7 @@ class Lee2ApplicationTests {
 
 	@Test
 	void loadsOrderSeedData() {
-		assertThat(countRows("customers")).isEqualTo(8);
+		assertThat(countRows("customers")).isEqualTo(9);
 		assertThat(countRows("items")).isEqualTo(12);
 		assertThat(countRows("customer_orders")).isEqualTo(12);
 		assertThat(countRows("order_items")).isEqualTo(31);
