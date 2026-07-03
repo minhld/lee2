@@ -1,5 +1,6 @@
 package com.minh.lee2.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -34,6 +35,7 @@ public class Item {
     @Column(name = "unit_price", nullable = false, precision = 10, scale = 2)
     private BigDecimal unitPrice;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "item")
     private List<OrderItem> orderItems = new ArrayList<>();
 }

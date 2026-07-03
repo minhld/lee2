@@ -8,6 +8,8 @@ INSERT INTO customers (id, first_name, last_name, email) VALUES
     (7, 'Sofia', 'Garcia', 'sofia.garcia@example.com'),
     (8, 'Marcus', 'Brown', 'marcus.brown@example.com');
 
+ALTER TABLE customers ALTER COLUMN id RESTART WITH 9;
+
 INSERT INTO items (id, sku, name, unit_price) VALUES
     (1, 'KEY-001', 'Mechanical Keyboard', 129.99),
     (2, 'MOU-002', 'Wireless Mouse', 49.99),

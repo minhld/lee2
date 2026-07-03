@@ -1,16 +1,19 @@
 package com.minh.lee2.controller;
 
+import com.minh.lee2.controller.model.CustomerInput;
+import com.minh.lee2.model.Customer;
+import com.minh.lee2.model.CustomerOrder;
 import com.minh.lee2.service.MainService;
 import com.minh.lee2.model.SystemInfo;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/v1")
@@ -38,4 +41,18 @@ public class MainController {
         return ResponseEntity.ok(mainService.getSystemInfo());
     }
 
+    @GetMapping(path = "/customer-order/{id}")
+    public ResponseEntity<CustomerOrder> getCustomerOrder(@PathVariable Long id) {
+        return ResponseEntity.ok(mainService.getCustomerOrder(id));
+    }
+
+    @GetMapping(path = "/customer/{id}")
+    public ResponseEntity<Customer> getCustomer(@PathVariable Long id) {
+        return ResponseEntity.ok(mainService.getCustomer(id));
+    }
+
+    @PostMapping(path = "/customer/add")
+    public ResponseEntity<Customer> addCustomer(@Valid @RequestBody CustomerInput customer) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(mainService.createCustomer(customer));
+    }
 }
