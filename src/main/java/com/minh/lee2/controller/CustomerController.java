@@ -5,10 +5,12 @@ import com.minh.lee2.model.Customer;
 import com.minh.lee2.service.CustomerService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@Profile({ "dev","stage" })
 @RestController
 public class CustomerController {
     @Autowired
