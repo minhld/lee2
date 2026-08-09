@@ -1,6 +1,7 @@
 package com.minh.lee2.model;
 
 import com.azure.spring.data.cosmos.core.mapping.Container;
+import com.azure.spring.data.cosmos.core.mapping.PartitionKey;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 
@@ -13,7 +14,7 @@ import org.springframework.data.annotation.Id;
 public class Customer {
 
     @Id
-    private Long id;
+    private String id;
 
     private String firstName;
 

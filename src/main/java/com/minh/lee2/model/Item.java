@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 public class Item {
 
     @Id
-    private Long id;
+    private String id;
 
     private String sku;
 
