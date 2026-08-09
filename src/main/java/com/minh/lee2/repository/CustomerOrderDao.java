@@ -4,6 +4,9 @@ import com.azure.spring.data.cosmos.repository.CosmosRepository;
 import com.minh.lee2.model.CustomerOrder;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
-public interface CustomerOrderDao extends CosmosRepository<CustomerOrder, Long> {
+public interface CustomerOrderDao extends CosmosRepository<CustomerOrder, String> {
+    List<CustomerOrder> findByCustomerId(String customerId);
 }

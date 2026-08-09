@@ -1,7 +1,6 @@
 package com.minh.lee2.repository;
 
 import com.azure.spring.data.cosmos.repository.CosmosRepository;
-import com.azure.spring.data.cosmos.repository.Query;
 import com.minh.lee2.model.Customer;
 import org.springframework.stereotype.Repository;
 

@@ -3,9 +3,11 @@ package com.minh.lee2.service;
 import com.minh.lee2.controller.model.CustomerInput;
 import com.minh.lee2.exception.CustomerNotFoundException;
 import com.minh.lee2.model.Customer;
+import com.minh.lee2.repository.CustomerOrderDao;
 import com.minh.lee2.repository.CustomerDao;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -19,15 +21,21 @@ public class CustomerService {
     @Autowired
     private CustomerDao customerDao;
 
+    @Autowired
+    @Qualifier("customerOrderDao")
+    private CustomerOrderDao customerOrderDao;
+
     @Cacheable("customers")
     public Customer getCustomer(String firstName) {
         log.info("Get customer by first name: {}", firstName);
-        return customerDao.findByFirstName(firstName).stream()
+        Customer customer = customerDao.findByFirstName(firstName).stream()
                 .findFirst()
                 .orElseThrow(() -> {
                     log.info("Customer with first name {} not found", firstName);
                     return new CustomerNotFoundException(firstName);
                 });
+        customer.setOrders(customerOrderDao.findByCustomerId(customer.getId()));
+        return customer;
     }
 
     public List<Customer> getAll() {
