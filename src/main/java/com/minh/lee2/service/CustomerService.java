@@ -9,6 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.UUID;
+import java.util.stream.StreamSupport;
+
 @Slf4j
 @Service
 public class CustomerService {
@@ -16,21 +20,25 @@ public class CustomerService {
     private CustomerDao customerDao;
 
     @Cacheable("customers")
-    public Customer getCustomer(Long id) {
-        log.info("Get customer by ID: {}", id);
-        try {
-            Customer customer = null; // this.customerDao.getReferenceById(id);
-            log.info("Found customer: {}", customer.getFirstName());
-            return customer;
-        } catch (Throwable e) {
-            log.info("Customer with ID {} not found", id);
-            throw new CustomerNotFoundException(id);
-        }
+    public Customer getCustomer(String firstName) {
+        log.info("Get customer by first name: {}", firstName);
+        return customerDao.findByFirstName(firstName).stream()
+                .findFirst()
+                .orElseThrow(() -> {
+                    log.info("Customer with first name {} not found", firstName);
+                    return new CustomerNotFoundException(firstName);
+                });
+    }
+
+    public List<Customer> getAll() {
+        return StreamSupport.stream(customerDao.findAll().spliterator(), false)
+                .toList();
     }
 
     public Customer createCustomer(CustomerInput customer) {
         log.info("Create new customer from the input: {}", customer);
         Customer newCustomer = Customer.builder()
+                .id(UUID.randomUUID().toString())
                 .firstName(customer.getFirstName())
                 .lastName(customer.getLastName())
                 .email(customer.getEmail())

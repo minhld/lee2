@@ -13,3 +13,9 @@ spring:
 
 app:
   name: "Lee Service v2"
+
+logging:
+  level:
+    com.azure.cosmos: DEBUG
+    com.azure.spring.data.cosmos: DEBUG
+    reactor.netty: INFO

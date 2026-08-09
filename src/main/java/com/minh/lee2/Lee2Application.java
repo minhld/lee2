@@ -9,7 +9,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication
 // @EnableScheduling
 @EnableAsync
-@EnableCaching
+// @EnableCaching
 public class Lee2Application {
 
 	public static void main(String[] args) {
