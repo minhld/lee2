@@ -53,7 +53,7 @@ public class MainService {
     }
 
     public CustomerOrder getCustomerOrder(Long id) {
-        CustomerOrder customerOrder = this.customerOrderData.getReferenceById(id);
+        CustomerOrder customerOrder = null; //this.customerOrderData.getReferenceById(id);
         log.info("getCustomerOrder:{}", objectMapper.writeValueAsString(customerOrder));
 
         log.info("Applying Payment");

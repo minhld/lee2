@@ -2,27 +2,13 @@ spring:
   application:
     name: lee2
 
-  datasource:
-    url: jdbc:h2:file:./data/lee2-db;AUTO_SERVER=TRUE
-    driver-class-name: org.h2.Driver
-    username: sa
-    password: sa
-
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
-
-  sql:
-    init:
-      mode: never
-      schema-locations: classpath:schema.sql
-      data-locations: classpath:data.sql
-
-  jpa:
-    hibernate:
-      ddl-auto: none
-    show-sql: true
+  cloud:
+    azure:
+      cosmos:
+        endpoint: https://192.168.1.71:8081
+        key: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
+        database: lee2-db
+        connection-mode: gateway
 
 app:
   name: "Lee Service v2"
