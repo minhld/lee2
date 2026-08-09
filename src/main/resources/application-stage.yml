@@ -9,11 +9,7 @@ spring:
         key: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
         database: lee2-db
         connection-mode: gateway
-
-  jpa:
-    hibernate:
-      ddl-auto: none
-    show-sql: true
+        populate-query-metrics: true
 
 app:
   name: "Lee Service v2"

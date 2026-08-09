@@ -19,7 +19,7 @@ public class CustomerService {
     public Customer getCustomer(Long id) {
         log.info("Get customer by ID: {}", id);
         try {
-            Customer customer = this.customerDao.getReferenceById(id);
+            Customer customer = null; // this.customerDao.getReferenceById(id);
             log.info("Found customer: {}", customer.getFirstName());
             return customer;
         } catch (Throwable e) {
