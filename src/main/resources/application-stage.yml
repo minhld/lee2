@@ -17,5 +17,6 @@ app:
 logging:
   level:
     com.azure.cosmos: DEBUG
+    com.azure.cosmos.implementation: DEBUG
     com.azure.spring.data.cosmos: DEBUG
     reactor.netty: INFO
